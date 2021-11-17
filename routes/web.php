@@ -31,7 +31,7 @@ Route::group([
     Route::group([
         'middleware' => ['role:administrador']
     ],function(){
-        //Route::post('',[ProductController::class,'index']);
+        Route::delete('/{prod}',[ProductController::class,'delete'])->name('prod.delete');
     });
 });
 

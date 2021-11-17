@@ -7,6 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <x-alert />
             @if ($admin)
             <div class="py-6">
                 <a href="#" class="bg-green-500 hover:bg-green-600 rounded py-2 px-6 shadow text-white">Crear</a>
@@ -24,7 +25,7 @@
                             <button class="bg-indigo-500 hover:bg-indigo-600 rounded py-2 px-6 shadow text-white">Comprar</button>
                         @else
                             <a href="#" class="bg-yellow-500 hover:bg-yellow-600 rounded py-2 px-6 shadow text-white mr-2">Editar</a>
-                            <form action="#" method="POST">
+                            <form action="{{ route('prod.delete',$item)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-600 hover:bg-red-700 rounded py-2 px-6 shadow text-white">Eliminar</button>
