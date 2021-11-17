@@ -23,10 +23,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::group([
-    'middleware' => ['auth','role:administrador'],
+    'middleware' => ['auth'],
     'prefix' => '/productos'
 ],function(){
     Route::get('',[ProductController::class,'index'])->name('products');
+
+    Route::group([
+        'middleware' => ['role:administrador']
+    ],function(){
+        //Route::post('',[ProductController::class,'index']);
+    });
 });
 
 require __DIR__.'/auth.php';

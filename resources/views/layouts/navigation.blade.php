@@ -15,10 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    @if (auth()->user()->rol[0]->name === 'administrador')                        
                     <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
                         {{ __('Productos') }}
                     </x-nav-link>
+                    @if (auth()->user()->rol[0]->name === 'administrador')                        
                     @endif
                 </div>
             </div>
