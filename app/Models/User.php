@@ -41,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['rol'];
+
+    // RELACIONES
+    /** 
+     * Get rol
+    */
+    public function rol(){
+        return $this->belongsToMany(Role::class);
+    }
 }
