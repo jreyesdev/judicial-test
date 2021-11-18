@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,13 @@ Route::group([
 
     Route::post('/comprar/{prod}', [ProductController::class, 'shop'])
         ->middleware('role:cliente')->name('prod.shop');
+});
+
+Route::group([
+    'middleware' => ['auth', 'role:administrador'],
+    'prefix' => '/facturas'
+], function () {
+    Route::get('', [FacturaController::class, 'index'])->name('facturas');
 });
 
 require __DIR__ . '/auth.php';
