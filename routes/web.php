@@ -32,6 +32,8 @@ Route::group([
         'middleware' => ['role:administrador']
     ], function () {
         Route::get('nuevo', [ProductController::class, 'nuevo'])->name('prod.create');
+        Route::post('nuevo', [ProductController::class, 'add']);
+
         Route::delete('/{prod}', [ProductController::class, 'delete'])->name('prod.delete');
     });
 });
