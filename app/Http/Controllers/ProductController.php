@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Products\CreateProductRequest;
+use App\Http\Requests\Products\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -62,13 +63,16 @@ class ProductController extends Controller
 
     /**
      * POST para crear producto
-     * @param Request $req
+     * @param UpdateProductRequest $req
      * @return Redirect
      */
-    public function update(Request $req)
+    public function update(UpdateProductRequest $req, Product $prod)
     {
-        $alert = Product::create($req->validated());
-        $alert = $alert ? ['success', 'Producto creado.'] : ['danger', 'Error al crear producto.'];
+        $alert = $req->validated();
+        $prod->name = $alert['name'];
+        $prod->price = $alert['price'];
+        $prod->tax = $alert['tax'];
+        $alert = $prod->save() ? ['success', 'Producto actualizado.'] : ['danger', 'Error al actualizar producto.'];
         return redirect(route('products'))->withAlert($alert);
     }
 
