@@ -14,7 +14,6 @@ class CreateComprasTable extends Migration
     public function up()
     {
         Schema::create('compras', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
