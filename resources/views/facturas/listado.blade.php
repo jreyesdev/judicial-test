@@ -37,7 +37,7 @@
                 </div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-                $ 1500.00
+                $ {{ number_format($item->total,2) }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {{$item->created_at->format('d M Y')}}

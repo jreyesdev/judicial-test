@@ -24,8 +24,8 @@
         @endphp
         @foreach ($cod as $item)
         @php
-            $item->cant = 1;
-            $subtotal = number_format($item->cant * $item->price * ($item->tax + 1),2);
+            $subtotal = $item->cant * $item->price * ($item->tax + 1);
+            $subtotal = round($subtotal,2,PHP_ROUND_HALF_DOWN);
             $total += $subtotal;
         @endphp
         <tr>
@@ -42,7 +42,7 @@
                 <div class="text-sm text-gray-500">{{ $item->tax * 100 }} %</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right">
-                <div class="text-sm text-gray-900">$ {{ $subtotal }}</div>
+                <div class="text-sm text-gray-900">$ {{ number_format($subtotal,2) }}</div>
             </td>
         </tr>
         @endforeach
@@ -52,7 +52,7 @@
                 <div class="text-lg text-indigo-900 uppercase">Total:</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right">
-                <div class="text-lg text-indigo-900">$ {{ $total }}</div>
+                <div class="text-lg text-indigo-900">$ {{ number_format(round($total,2,PHP_ROUND_HALF_DOWN),2) }}</div>
             </td>
         </tr>
     </tbody>

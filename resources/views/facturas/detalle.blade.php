@@ -12,7 +12,9 @@
                     <h3 class="text-gray-500 uppercase">Cliente</h3>
                     <h3 class="text-gray-700 mb-3">{{ $cod[0]->user->name }}</h3>
                     <h3 class="text-gray-500 uppercase">Correo electrónico</h3>
-                    <h3 class="text-gray-700">{{ $cod[0]->user->email }}</h3>
+                    <h3 class="text-gray-700 mb-3">{{ $cod[0]->user->email }}</h3>
+                    <h3 class="text-gray-500 uppercase">Nº Factura</h3>
+                    <h3 class="text-gray-700">{{ $cod[0]->codigo }}</h3>
                 </div>
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
