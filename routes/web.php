@@ -3,17 +3,6 @@
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -33,6 +22,9 @@ Route::group([
     ], function () {
         Route::get('nuevo', [ProductController::class, 'nuevo'])->name('prod.create');
         Route::post('nuevo', [ProductController::class, 'add']);
+
+        Route::get('editar/{prod}', [ProductController::class, 'editar'])->name('prod.edit');
+        Route::post('editar/{prod}', [ProductController::class, 'update']);
 
         Route::delete('/{prod}', [ProductController::class, 'delete'])->name('prod.delete');
     });

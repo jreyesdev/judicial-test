@@ -27,7 +27,11 @@ class ProductController extends Controller
      */
     public function nuevo()
     {
-        return view('products.nuevo');
+        $titulo = 'Crear nuevo producto';
+        $ruta = route('prod.create');
+        $button = 'Agregar';
+        $prod = null;
+        return view('products.nuevo', compact('titulo', 'ruta', 'button', 'prod'));
     }
 
     /**
@@ -36,6 +40,32 @@ class ProductController extends Controller
      * @return Redirect
      */
     public function add(CreateProductRequest $req)
+    {
+        $alert = Product::create($req->validated());
+        $alert = $alert ? ['success', 'Producto creado.'] : ['danger', 'Error al crear producto.'];
+        return redirect(route('products'))->withAlert($alert);
+    }
+
+    /**
+     * Vista para editar producto
+     * @param Request $req
+     * @param Product $prod
+     * @return View
+     */
+    public function editar(Request $req, Product $prod)
+    {
+        $titulo = 'Actualizar producto ' . $prod->name;
+        $ruta = route('prod.edit', $prod);
+        $button = 'Actualizar';
+        return view('products.nuevo', compact('titulo', 'ruta', 'button', 'prod'));
+    }
+
+    /**
+     * POST para crear producto
+     * @param Request $req
+     * @return Redirect
+     */
+    public function update(Request $req)
     {
         $alert = Product::create($req->validated());
         $alert = $alert ? ['success', 'Producto creado.'] : ['danger', 'Error al crear producto.'];

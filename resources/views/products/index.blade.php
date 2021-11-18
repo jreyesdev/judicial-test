@@ -24,7 +24,7 @@
                         @if (!$admin)
                             <button class="bg-indigo-500 hover:bg-indigo-600 rounded py-2 px-6 shadow text-white">Comprar</button>
                         @else
-                            <a href="#" class="bg-yellow-500 hover:bg-yellow-600 rounded py-2 px-6 shadow text-white mr-2">Editar</a>
+                            <a href="{{ route('prod.edit',$item) }}" class="bg-yellow-500 hover:bg-yellow-600 rounded py-2 px-6 shadow text-white mr-2">Editar</a>
                             <form action="{{ route('prod.delete',$item)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
