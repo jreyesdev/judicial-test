@@ -16,6 +16,7 @@ class CreateFacturasTable extends Migration
         Schema::create('facturas', function (Blueprint $table) {
             $table->string('codigo', 10);
             $table->string('nombre_producto');
+            $table->unsignedBigInteger('cant');
             $table->float('price', 8, 2);
             $table->float('tax', 3, 2);
             $table->foreignId('user_id')->constrained('users');

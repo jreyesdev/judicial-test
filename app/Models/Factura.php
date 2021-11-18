@@ -23,6 +23,7 @@ class Factura extends Model
     protected $fillable = [
         'codigo',
         'nombre_producto',
+        'cant',
         'price',
         'tax',
         'user_id',
@@ -36,6 +37,7 @@ class Factura extends Model
     protected $casts = [
         'codigo' => 'string',
         'nombre_producto' => 'string',
+        'cant' => 'integer',
         'price' => 'decimal:2',
         'tax' => 'decimal:2',
         'user_id' => 'integer',
