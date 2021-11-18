@@ -13,18 +13,29 @@ class ProductController extends Controller
      * Vista de los productos
      * @return View
      */
-    public function index(){
+    public function index()
+    {
         $p = Product::paginate();
         $admin = auth()->user()->rol[0]->name === 'administrador';
-        return view('products.index',compact('p','admin'));
+        return view('products.index', compact('p', 'admin'));
+    }
+
+    /**
+     * Vista para crear producto
+     * @return View
+     */
+    public function nuevo()
+    {
+        return view('products.nuevo');
     }
 
     /**
      * Elimina producto
      * @return Redirect
      */
-    public function delete(Request $req, Product $prod){
-        $alert = $prod->delete() ? ['success','Producto eliminado'] : ['danger','Error al eliminar'];
+    public function delete(Request $req, Product $prod)
+    {
+        $alert = $prod->delete() ? ['success', 'Producto eliminado'] : ['danger', 'Error al eliminar'];
         return redirect(route('products'))->withAlert($alert);
     }
 }

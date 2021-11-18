@@ -25,14 +25,15 @@ Route::get('/dashboard', function () {
 Route::group([
     'middleware' => ['auth'],
     'prefix' => '/productos'
-],function(){
-    Route::get('',[ProductController::class,'index'])->name('products');
+], function () {
+    Route::get('', [ProductController::class, 'index'])->name('products');
 
     Route::group([
         'middleware' => ['role:administrador']
-    ],function(){
-        Route::delete('/{prod}',[ProductController::class,'delete'])->name('prod.delete');
+    ], function () {
+        Route::get('nuevo', [ProductController::class, 'nuevo'])->name('prod.create');
+        Route::delete('/{prod}', [ProductController::class, 'delete'])->name('prod.delete');
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

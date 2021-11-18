@@ -10,7 +10,7 @@
             <x-alert />
             @if ($admin)
             <div class="py-6">
-                <a href="#" class="bg-green-500 hover:bg-green-600 rounded py-2 px-6 shadow text-white">Crear</a>
+                <a href="{{ route('prod.create') }}" class="bg-green-500 hover:bg-green-600 rounded py-2 px-6 shadow text-white">Crear</a>
             </div>
             @endif
             <div class="grid grid-cols-1 md:grid-cols-4">
@@ -31,12 +31,12 @@
                                 <button type="submit" class="bg-red-600 hover:bg-red-700 rounded py-2 px-6 shadow text-white">Eliminar</button>
                             </form>
                         @endif
-                        </div>                             
+                        </div>
                     </div>
-                </div>                
+                </div>
                 @endforeach
             </div>
-            <div class="flex justify-center mt-7">{{ $p->links() }}</div>              
+            <div class="flex justify-center mt-7">{{ $p->links() }}</div>
         </div>
     </div>
 </x-app-layout>
