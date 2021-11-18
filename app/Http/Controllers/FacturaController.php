@@ -21,6 +21,20 @@ class FacturaController extends Controller
     }
 
     /**
+     * Detalle de factura
+     * @return View
+     */
+    public function show(Request $req, string $cod)
+    {
+        $cod = Factura::whereCodigo($cod)
+            ->orderBy('created_at', 'desc')->get();
+
+        if (!count($cod)) abort(404);
+
+        return view('facturas.detalle', compact('cod'));
+    }
+
+    /**
      * Retorna codigo de la factura
      * @return string
      */
