@@ -35,7 +35,10 @@ Route::group([
     'prefix' => '/facturas'
 ], function () {
     Route::get('', [FacturaController::class, 'index'])->name('facturas');
-    Route::get('/{cod}', [FacturaController::class, 'show'])->name('fact.show');
+
+    Route::get('/detalle/{cod}', [FacturaController::class, 'show'])->name('fact.show');
+
+    Route::get('/generar', [FacturaController::class, 'generar'])->name('fact.genera');
 });
 
 require __DIR__ . '/auth.php';

@@ -10,7 +10,7 @@
             <x-alert />
             @if ($comp)
             <div class="py-6">
-                <a href="{{ route('prod.create') }}" class="bg-indigo-500 hover:bg-indigo-600 rounded py-2 px-6 shadow text-white">Generar Facturas</a>
+                <a href="{{ route('fact.genera') }}" class="bg-indigo-500 hover:bg-indigo-600 rounded py-2 px-6 shadow text-white">Generar Facturas</a>
             </div>
             @endif
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg m-2">
