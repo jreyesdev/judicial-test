@@ -22,7 +22,10 @@
                         <div class="text-gray-600 mb-4">{{ $item->tax * 100 }} %</div>
                         <div class="flex justify-end">
                         @if (!$admin)
-                            <button class="bg-indigo-500 hover:bg-indigo-600 rounded py-2 px-6 shadow text-white">Comprar</button>
+                        <form action="{{ route('prod.shop',$item) }}" method="post">
+                            @csrf
+                            <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 rounded py-2 px-6 shadow text-white">Comprar</button>
+                        </form>
                         @else
                             <a href="{{ route('prod.edit',$item) }}" class="bg-yellow-500 hover:bg-yellow-600 rounded py-2 px-6 shadow text-white mr-2">Editar</a>
                             <form action="{{ route('prod.delete',$item)}}" method="POST">

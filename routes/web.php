@@ -24,6 +24,9 @@ Route::group([
 
         Route::delete('/{prod}', [ProductController::class, 'delete'])->name('prod.delete');
     });
+
+    Route::post('/comprar/{prod}', [ProductController::class, 'shop'])
+        ->middleware('role:cliente')->name('prod.shop');
 });
 
 require __DIR__ . '/auth.php';

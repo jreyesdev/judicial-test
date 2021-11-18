@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Products\CreateProductRequest;
 use App\Http\Requests\Products\UpdateProductRequest;
+use App\Models\Compra;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -83,6 +84,20 @@ class ProductController extends Controller
     public function delete(Request $req, Product $prod)
     {
         $alert = $prod->delete() ? ['success', 'Producto eliminado'] : ['danger', 'Error al eliminar'];
+        return redirect(route('products'))->withAlert($alert);
+    }
+
+    /**
+     * POST para crear compra del cliente
+     * @return Redirect
+     */
+    public function shop(Request $req, Product $prod)
+    {
+        $alert = Compra::create([
+            'product_id' => $prod->id,
+            'user_id' => $req->user()->id
+        ]);
+        $alert = $alert ? ['success', 'Compra realizada'] : ['danger', 'Error al generar compra'];
         return redirect(route('products'))->withAlert($alert);
     }
 }
