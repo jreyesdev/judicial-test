@@ -94,8 +94,7 @@ class ProductController extends Controller
     public function shop(Request $req, Product $prod)
     {
         $alert = Compra::create([
-            'product_id' => $prod->id,
-            'user_id' => $req->user()->id
+            'product_id' => $prod->id
         ]);
         $alert = $alert ? ['success', 'Compra realizada'] : ['danger', 'Error al generar compra'];
         return redirect(route('products'))->withAlert($alert);
